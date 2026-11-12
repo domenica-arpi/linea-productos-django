@@ -10,3 +10,6 @@ urlpatterns = [
 
 if settings.ENABLE_REPORTS:
     urlpatterns += [path("reports/", include("reports.urls"))]
+
+if settings.ENABLE_NOTIFICATIONS:
+    urlpatterns += [path("notifications/", include("notifications.urls"))]
