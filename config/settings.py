@@ -40,6 +40,11 @@ INSTALLED_APPS = [
     "core",
     "accounts",
 ]
+# --- Banderas de características (variabilidad) ---
+ENABLE_REPORTS = True # Cambiar a True para habilitar la funcionalidad de reportes
+
+if ENABLE_REPORTS:
+    INSTALLED_APPS += ["reports"]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -60,9 +65,11 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'core.context_processors.features',
             ],
         },
     },

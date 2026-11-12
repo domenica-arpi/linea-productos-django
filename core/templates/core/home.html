@@ -7,5 +7,9 @@
 <body>
     <h1>Sistema Web - Línea de Productos</h1>
     <p>Bienvenido. Este es el núcleo del sistema.</p>
+
+    {% if ENABLE_REPORTS %}
+        <p><a href="{% url 'reports:export' %}">Exportar reportes</a></p>
+    {% endif %}
 </body>
 </html>
