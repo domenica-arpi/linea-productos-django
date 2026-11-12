@@ -40,11 +40,20 @@ INSTALLED_APPS = [
     "core",
     "accounts",
 ]
-# --- Banderas de características (variabilidad) ---
-ENABLE_REPORTS = True # Cambiar a True para habilitar la funcionalidad de reportes
+# --- Selección de variante del producto ---
+import os
+from .config_product import PRODUCTS
+
+PRODUCT = os.environ.get("PRODUCT", "B")
+FEATURES = PRODUCTS[PRODUCT]
+
+ENABLE_REPORTS = FEATURES["ENABLE_REPORTS"]
+ENABLE_NOTIFICATIONS = FEATURES["ENABLE_NOTIFICATIONS"]
 
 if ENABLE_REPORTS:
     INSTALLED_APPS += ["reports"]
+if ENABLE_NOTIFICATIONS:
+    INSTALLED_APPS += ["notifications"]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
